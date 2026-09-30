@@ -1,0 +1,14 @@
+version: 1
+project:
+  title: Your Name
+  toc:
+    - file: index.md
+    - file: about.ipynb
+    - file: blog.ipynb
+      children:
+        - file: bootstrap.ipynb
+site:
+  template: book-theme
+  options:
+    logo_text: Your Name
+    style: custom.css

@@ -1,0 +1,3 @@
+# Delete the Disallow line to let search engines index the site.
+User-agent: *
+Disallow: /

@@ -1,0 +1,14 @@
+# Base values shared by every environment. Env-specific overrides layer on top:
+#   helm ... -f values.yaml -f values-local.yaml   (or values-eks.yaml)
+hub:
+  config:
+    Authenticator:
+      admin_users:
+        - admin
+cull:
+  enabled: true
+  timeout: 3600
+singleuser:
+  memory:
+    limit: 2G
+    guarantee: 512M

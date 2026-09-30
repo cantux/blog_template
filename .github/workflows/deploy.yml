@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+      - run: |
+          if [ -f CNAME ]; then
+            echo "BASE_URL=" >> "$GITHUB_ENV"
+          else
+            echo "BASE_URL=/${GITHUB_REPOSITORY#*/}" >> "$GITHUB_ENV"
+          fi
+      - run: npm install -g mystmd@1.10.1
+      - run: myst build --html
+      - run: cp robots.txt _build/html/robots.txt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install jupyterlite-core==0.8.4 jupyterlite-pyodide-kernel==0.8.6 jupyter-server==2.21.1
+      - run: python scripts/jlite_contents.py
+      - run: jupyter lite build --contents .jlite --output-dir _build/html/lite
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_build/html'
+      - id: deployment
+        uses: actions/deploy-pages@v4

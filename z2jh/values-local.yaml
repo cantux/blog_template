@@ -1,0 +1,18 @@
+# Local k3s overrides: turn off the cloud-shaped parts.
+hub:
+  config:
+    JupyterHub:
+      authenticator_class: dummy
+    DummyAuthenticator:
+      password: localdev
+scheduling:
+  userScheduler:
+    enabled: false # saves 2 pods; only matters on autoscaling clusters
+prePuller:
+  hook:
+    enabled: false
+  continuous:
+    enabled: false
+singleuser:
+  cloudMetadata:
+    blockWithIptables: false # blocks 169.254.169.254 on cloud; breaks local clusters

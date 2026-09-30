@@ -1,0 +1,3 @@
+.myst-toc > a.myst-toc-item[href="/"] {
+  display: none;
+}

@@ -1,0 +1,22 @@
+# Cloud overlay — every cloud-specific choice lives HERE, nothing above depends on AWS.
+# Fill in domain + OAuth app (github.com/settings/developers) before first deploy.
+proxy:
+  https:
+    enabled: true
+    hosts:
+      - hub.<yourdomain>
+    letsencrypt:
+      contactEmail: <your-email>
+hub:
+  config:
+    JupyterHub:
+      authenticator_class: github
+    GitHubOAuthenticator:
+      client_id: "<id>"
+      client_secret: "<secret>"
+      oauth_callback_url: https://hub.<yourdomain>/hub/oauth_callback
+      allowed_users:
+        - "<your-github-username>"
+# Defaults already correct for cloud: LoadBalancer proxy, dynamic PVC storage,
+# cloudMetadata.blockWithIptables=true. GPU nodes later: add a profileList with
+# node selectors here, not in the base file.
