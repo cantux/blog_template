@@ -85,4 +85,4 @@ git -C ~/posts config user.name <user>
 git -C ~/posts config user.email <user>@users.noreply.github.com
 ```
 
-Restart your server (File → Hub Control Panel → Stop → Start) so the extension loads. Then: write in `~/posts`, open the Git tab, commit; the push follows. The posts repo needs a workflow that runs `gh workflow run deploy.yml -R <user>/<site-repo>` with a fine-grained token (repository access: the site repo; permission: Actions, read and write).
+Restart your server (File → Hub Control Panel → Stop → Start) so the extension loads. Then: write in `~/posts`, open the Git tab, commit; the push follows. The posts repo needs a workflow that runs `gh api -X POST repos/<user>/<site-repo>/actions/workflows/deploy.yml/dispatches -f ref=main` with a fine-grained token (repository access: the site repo; permission: Actions, read and write). Call the REST endpoint, not `gh workflow run`: that command looks up the default branch over GraphQL, which refuses fine-grained tokens.
