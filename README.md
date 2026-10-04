@@ -97,7 +97,7 @@ python3 -m venv .venv && .venv/bin/pip install jupyter numpy matplotlib plotly
 | `CNAME` | your domain, one line; absent means a `github.io` path |
 | `robots.txt` | crawler policy, copied into the build |
 | `custom.css` | three lines, hides the duplicate home entry in the sidebar |
-| `.github/workflows/deploy.yml` | build and deploy; no site-specific values in it |
+| `.github/workflows/deploy.yml` | build and deploy; no site-specific values in it. Content submodules build at their remote head, so a push to a public `posts` submodule plus `gh workflow run deploy.yml` publishes without a commit here |
 | `scripts/jlite_contents.py` | stages `posts/` for the JupyterLite build |
 | `setup.sh` | one-shot personalization |
 | `tljh/`, `z2jh/` | optional private authoring hub, two flavors |
