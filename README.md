@@ -122,7 +122,7 @@ limactl start --name=tljh tljh/local/tljh-local.yaml   # http://localhost:12000
 
 `tljh/` is The Littlest JupyterHub on one EC2 instance. `z2jh/` is Zero to JupyterHub on Kubernetes, local-first, with cloud specifics confined to `values-eks.yaml`. Each directory has its own README. Running one costs about $21 a month; the post has the breakdown.
 
-To author on the hub, clone this repo there with a **deploy key scoped to this repo, write access only** — never a personal SSH key on a cloud box:
+To author on the hub, clone the posts repo there (or this one, if posts live here) with a **deploy key scoped to that repo, write access only** — never a personal SSH key on a cloud box. `tljh/README.md` has the full loop with jupyterlab-git:
 
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/blog_deploy -N ''

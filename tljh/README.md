@@ -68,4 +68,21 @@ Pay GPU rates only while authoring:
 
 ## Authoring loop
 
-Write/run notebooks on the hub → download/commit the .ipynb **with outputs** to this repo's `posts/` → CI rebuilds the site.
+Keep the posts in their own public repo and mount it as the site repo's `posts/` submodule: the deploy workflow builds that repo's head. On the hub you write in a clone of the posts repo and push from JupyterLab's Git tab; the posts repo's workflow starts the site deploy with a token that can only run workflows.
+
+One-time, from a JupyterLab terminal on the hub (admin users have passwordless sudo, so no SSH key is needed):
+
+```bash
+sudo -E /opt/tljh/user/bin/pip install jupyterlab-git nbdime
+sudo tee /opt/tljh/user/share/jupyter/lab/settings/overrides.json <<'EOF'
+{"@jupyterlab/git:plugin": {"commitAndPush": true, "simpleStaging": true}}
+EOF
+ssh-keygen -t ed25519 -f ~/.ssh/posts_deploy -N ''
+cat ~/.ssh/posts_deploy.pub    # add it as a deploy key with write access on the posts repo
+GIT_SSH_COMMAND='ssh -i ~/.ssh/posts_deploy -o StrictHostKeyChecking=accept-new' git clone git@github.com:<user>/<posts-repo>.git ~/posts
+git -C ~/posts config core.sshCommand 'ssh -i ~/.ssh/posts_deploy'
+git -C ~/posts config user.name <user>
+git -C ~/posts config user.email <user>@users.noreply.github.com
+```
+
+Restart your server (File → Hub Control Panel → Stop → Start) so the extension loads. Then: write in `~/posts`, open the Git tab, commit; the push follows. The posts repo needs a workflow that runs `gh workflow run deploy.yml -R <user>/<site-repo>` with a fine-grained token (repository access: the site repo; permission: Actions, read and write).
