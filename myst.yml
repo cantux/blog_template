@@ -7,6 +7,8 @@ project:
     - file: blog.ipynb
       children:
         - file: bootstrap.ipynb
+        - pattern: posts/*.ipynb
+          sort: descending
 site:
   template: book-theme
   options:

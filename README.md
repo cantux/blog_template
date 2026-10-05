@@ -55,12 +55,29 @@ git add -A && git commit -m "Make it mine" && git push
 
 Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds and deploys. First run takes a couple of minutes. Watch it in the Actions tab.
 
+### 7. Posts in their own repo
+
+Optional, and what the hub loop below needs. Keep the notebooks in a public repo, one per post, and mount it:
+
+```bash
+git submodule add -b main https://github.com/<user>/<posts-repo>.git posts
+```
+
+The workflow builds that repo's head, so a push there publishes without a commit here, once the posts repo can start the deploy:
+
+- A fine-grained token: repository access, this repo only; permission, Actions read and write. Store it in the posts repo: `gh secret set SITE_ACTIONS_TOKEN -R <user>/<posts-repo>`.
+- A workflow in the posts repo, on push to `main`:
+  ```yaml
+  - run: gh api -X POST repos/<user>/<site-repo>/actions/workflows/deploy.yml/dispatches -f ref=main
+    env:
+      GH_TOKEN: ${{ secrets.SITE_ACTIONS_TOKEN }}
+  ```
+
 ## Write a post
 
-1. Save the notebook **with its outputs** as `posts/YYYY-MM-DD-title.ipynb`.
-2. Add it under `blog.ipynb`'s children in `toc` in `myst.yml`.
-3. Add a listing line with a one-sentence blurb to `blog.ipynb`.
-4. Push.
+1. Save the notebook **with its outputs** as `posts/YYYY-MM-DD-title.ipynb`. `myst.yml` lists `posts/*.ipynb` by pattern, newest first.
+2. Add a listing line with a one-sentence blurb to `blog.ipynb`.
+3. Push. If `posts/` is a submodule, push inside it; its workflow starts the deploy. Then `git submodule update --remote posts` here, commit, push.
 
 The build never starts a kernel — it renders the outputs already in the file. So whatever the notebook looked like when you saved it is what ships.
 
@@ -93,7 +110,7 @@ python3 -m venv .venv && .venv/bin/pip install jupyter numpy matplotlib plotly
 | `index.md` | landing page |
 | `about.ipynb`, `blog.ipynb` | pages, same as any post |
 | `bootstrap.ipynb` | the post that explains this design; keep it or drop it |
-| `posts/` | dated notebooks, committed with outputs |
+| `posts/` | dated notebooks, committed with outputs; a directory, or the posts repo as a submodule |
 | `CNAME` | your domain, one line; absent means a `github.io` path |
 | `robots.txt` | crawler policy, copied into the build |
 | `custom.css` | three lines, hides the duplicate home entry in the sidebar |
@@ -122,15 +139,4 @@ limactl start --name=tljh tljh/local/tljh-local.yaml   # http://localhost:12000
 
 `tljh/` is The Littlest JupyterHub on one EC2 instance. `z2jh/` is Zero to JupyterHub on Kubernetes, local-first, with cloud specifics confined to `values-eks.yaml`. Each directory has its own README. Running one costs about $21 a month; the post has the breakdown.
 
-To author on the hub, clone the posts repo there (or this one, if posts live here) with a **deploy key scoped to that repo, write access only** — never a personal SSH key on a cloud box. `tljh/README.md` has the full loop with jupyterlab-git:
-
-```bash
-ssh-keygen -t ed25519 -f ~/.ssh/blog_deploy -N ''
-```
-
-Add `~/.ssh/blog_deploy.pub` under Settings → Deploy keys with write access, then:
-
-```bash
-GIT_SSH_COMMAND='ssh -i ~/.ssh/blog_deploy' git clone git@github.com:<user>/<repo>.git
-git config core.sshCommand 'ssh -i ~/.ssh/blog_deploy'
-```
+To author on the hub, clone the posts repo there with a **deploy key scoped to that repo, write access only** — never a personal SSH key on a cloud box. `tljh/README.md` has the full loop with jupyterlab-git.
