@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 730" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t">
+<title id="t">Site components and the four steps from a saved notebook to a published page</title>
+<defs><marker id="head-accent" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,4 L0,8 z" fill="#b45309"/></marker><marker id="head-muted" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,4 L0,8 z" fill="#6b7280"/></marker></defs>
+<rect width="1040" height="730" rx="12" fill="#ffffff"/>
+<rect x="40" y="40" width="300" height="56" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="56" y="63" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#1f2937">Author</tspan></text>
+<text x="56" y="83" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">a browser, signed in to the hub</tspan></text>
+<line x1="190" y1="96" x2="190" y2="148" stroke="#b45309" stroke-width="2" marker-end="url(#head-accent)"/>
+<text x="204" y="118" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#b45309">① write a post</tspan></text>
+<text x="204" y="137" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">JupyterLab, save with outputs</tspan></text>
+<rect x="40" y="150" width="300" height="260" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<text x="56" y="176" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#1f2937">EC2 instance · hub.yourdomain.com</tspan></text>
+<text x="56" y="196" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">Elastic IP · Let's Encrypt · author only</tspan></text>
+<rect x="60" y="212" width="260" height="56" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="74" y="234" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="14" fill="#1f2937">JupyterHub (TLJH)</tspan></text>
+<text x="74" y="254" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">JupyterLab + jupyterlab-git</tspan></text>
+<rect x="60" y="284" width="260" height="106" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="74" y="306" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#1f2937">~/posts</tspan><tspan dx="8" fill="#6b7280">clone of the posts repo</tspan></text>
+<text x="74" y="328" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">deploy key: write, this repo only</tspan></text>
+<text x="74" y="352" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">YYYY-MM-DD-title.ipynb</tspan></text>
+<text x="74" y="372" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">committed with outputs</tspan></text>
+<text x="40" y="455" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">①–④ the publishing path: one push, two workflows.</tspan></text>
+<text x="40" y="475" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">Nothing on the site points at the hub.</tspan></text>
+<rect x="40" y="600" width="340" height="80" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="56" y="623" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="14" fill="#1f2937">DNS zone, at the registrar</tspan></text>
+<text x="54" y="647" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">yourdomain.com</tspan></text>
+<text x="214" y="647" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">A</tspan></text>
+<text x="232" y="647" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">GitHub Pages ×4</tspan></text>
+<text x="54" y="668" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">hub.yourdomain.com</tspan></text>
+<text x="214" y="668" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">A</tspan></text>
+<text x="232" y="668" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">EC2 Elastic IP</tspan></text>
+<rect x="400" y="150" width="320" height="546" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="416" y="176" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#1f2937">GitHub</tspan></text>
+<text x="416" y="196" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">repos · Actions · Pages</tspan></text>
+<rect x="420" y="282" width="280" height="110" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="434" y="304" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="14" fill="#1f2937">posts repo</tspan><tspan dx="8" fill="#6b7280">public</tspan></text>
+<text x="434" y="324" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">one notebook per post, outputs saved</tspan></text>
+<rect x="432" y="338" width="256" height="42" rx="6" fill="#eef2ff" stroke="#a5b4fc" stroke-width="1.5"/>
+<text x="444" y="355" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">Actions · deploy-site.yml</tspan></text>
+<text x="444" y="372" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">on push: start the site deploy</tspan></text>
+<line x1="452" y1="392" x2="452" y2="438" stroke="#b45309" stroke-width="2" marker-end="url(#head-accent)"/>
+<text x="468" y="411" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#b45309">③ GitHub Actions run</tspan></text>
+<text x="468" y="430" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">workflow dispatch, scoped token</tspan></text>
+<rect x="420" y="440" width="280" height="142" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="434" y="462" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="14" fill="#1f2937">site repo</tspan><tspan dx="8" fill="#6b7280">this template</tspan></text>
+<text x="434" y="482" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">myst.yml · pages · posts/ submodule</tspan></text>
+<rect x="432" y="496" width="256" height="74" rx="6" fill="#eef2ff" stroke="#a5b4fc" stroke-width="1.5"/>
+<text x="444" y="513" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">Actions · deploy.yml</tspan></text>
+<text x="444" y="530" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">checkout, submodule at the posts head</tspan></text>
+<text x="444" y="546" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">myst build --html · jupyter lite build</tspan></text>
+<text x="444" y="562" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">upload _build/html · deploy-pages</tspan></text>
+<line x1="452" y1="582" x2="452" y2="626" stroke="#b45309" stroke-width="2" marker-end="url(#head-accent)"/>
+<text x="468" y="601" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#b45309">④ pushed to the serving site</tspan></text>
+<text x="468" y="620" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">static HTML + /lite, no secret needed</tspan></text>
+<rect x="420" y="628" width="280" height="56" rx="8" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+<text x="434" y="650" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="14" fill="#1f2937">GitHub Pages</tspan><tspan dx="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">yourdomain.com</tspan></text>
+<text x="434" y="670" font-size="13" text-anchor="start" style=""><tspan fill="#6b7280">https, GitHub certificate</tspan></text>
+<rect x="760" y="150" width="240" height="160" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="776" y="173" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="14" fill="#1f2937">Credentials</tspan></text>
+<text x="776" y="197" font-size="13" text-anchor="start" style=""><tspan fill="#1f2937">hub → posts repo</tspan></text>
+<text x="776" y="214" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">deploy key, write, one repo</tspan></text>
+<text x="776" y="238" font-size="13" text-anchor="start" style=""><tspan fill="#1f2937">posts repo → site repo</tspan></text>
+<text x="776" y="255" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">token, run one repo's Actions</tspan></text>
+<text x="776" y="279" font-size="13" text-anchor="start" style=""><tspan fill="#1f2937">site repo → Pages</tspan></text>
+<text x="776" y="296" font-size="13" text-anchor="start" style=""><tspan font-size="12" fill="#6b7280">GITHUB_TOKEN, nothing to store</tspan></text>
+<line x1="700" y1="656" x2="758" y2="656" stroke="#6b7280" stroke-width="2" marker-end="url(#head-muted)"/>
+<text x="729" y="648" font-size="13" text-anchor="middle" style=""><tspan font-size="12" fill="#6b7280">https</tspan></text>
+<rect x="760" y="628" width="240" height="56" rx="8" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="776" y="650" font-size="13" text-anchor="start" style=""><tspan font-weight="600" font-size="15" fill="#1f2937">Visitor</tspan></text>
+<text x="776" y="670" font-size="13" text-anchor="start" style=""><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" fill="#1f2937">https://yourdomain.com</tspan></text>
+<line x1="320" y1="337" x2="418" y2="337" stroke="#b45309" stroke-width="2" marker-end="url(#head-accent)"/>
+<text x="369" y="324" font-size="13" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round"><tspan font-weight="600" font-size="15" fill="#b45309">② git push</tspan></text>
+<text x="369" y="356" font-size="13" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round"><tspan fill="#6b7280">ssh, deploy key</tspan></text>
+</svg>
