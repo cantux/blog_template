@@ -2,7 +2,7 @@
 
 A template for a personal site where every page is a Jupyter notebook, built by [MyST](https://mystmd.org) and served free on GitHub Pages. Posts show the outputs committed with the notebook; a post can link to an editable copy that runs in the reader's browser (JupyterLite).
 
-**Use this template and run it on your own domain.** The steps are below. The reasoning behind the design is the post: [How this site is built](bootstrap.ipynb).
+**Use this template and run it on your own domain.** The steps are below. The reasoning behind the design is the post: [Design of this site and how to run it yourself](bootstrap.ipynb).
 
 ## Use it
 
